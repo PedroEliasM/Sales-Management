@@ -1,4 +1,4 @@
--- Criação do schema
+-- Criação do DB
 CREATE DATABASE IF NOT EXISTS sales_management;
 USE sales_management;
 
