@@ -1,0 +1,28 @@
+<div class="product-list-container">
+  <h2>Lista de Produtos</h2>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <button routerLink="/employee/products/add">Adicionar Produto</button>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Valor</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.nome }}</td>
+        <td>{{ product.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
+        <td>{{ product.descricao }}</td>
+        <td>
+          <button [routerLink]="['/employee/products/edit', product.id]">Editar</button>
+          <button *ngIf="product.id !== undefined" (click)="deleteProduct(product.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

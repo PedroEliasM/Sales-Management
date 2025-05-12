@@ -1,0 +1,17 @@
+<div class="direct-purchase-container">
+  <h2>Comprar Produto</h2>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <div *ngIf="product">
+    <h3>{{ product.nome }}</h3>
+    <p class="price">{{ product.valor | currency:'BRL':'symbol':'1.2-2' }}</p>
+    <p class="description">{{ product.descricao }}</p>
+    <div class="quantity-control">
+      <label for="quantity">Quantidade:</label>
+      <input type="number" id="quantity" [(ngModel)]="quantity" min="1">
+    </div>
+    <button (click)="purchase()">Finalizar Compra</button>
+  </div>
+  <div *ngIf="!product">
+    <p>Produto não encontrado.</p>
+  </div>
+</div>
